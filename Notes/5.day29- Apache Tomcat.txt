@@ -1,0 +1,68 @@
+download the apache tomcat on the below location:
+change to root user
+/opt
+wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.34/bin/apache-tomcat-10.1.34.tar.gz
+
+
+
+To update the port number:
+location: /opt/apache-tomcat-10.1.34/conf
+filename: server.xml
+<Connector port="8080" protocol="HTTP/1.1"
+
+example -:
+<Connector port="8082" protocol="HTTP/1.1"
+
+update the value 8080 accrodingly
+
+To start and stop the Apache:
+Path: /opt/apache-tomcat-10.1.34/bin
+To stop: shutdown.sh
+To start:  startup.sh   
+
+
+
+url:
+publicip:portnumber
+http://13.235.104.242:8080/
+
+
+
+
+We need to comment out 2 lines under manager and host-manager
+loaction: /opt/apache-tomcat-10.1.34/webapps/manager/META-INF
+file: context.xml
+
+Comment out the below 2 line:
+<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+
+
+you can follow the same process for host-manager as well 
+opt/apache-tomcat-10.1.34/webapps/host-manager/META-INF
+file: context.xml
+
+
+
+
+To add user, pwd for maanger and host-manager
+location: /opt/apache-tomcat-10.1.34/conf
+file:tomcat-users.xml
+
+<!-- user manager can access only manager section -->
+<role rolename="manager-gui" />
+<user username="manager" password="_SECRET_PASSWORD_" roles="manager-gui" />
+
+<!-- user admin can access manager and admin section both -->
+<role rolename="admin-gui" />
+<user username="admin" password="_SECRET_PASSWORD_" roles="manager-gui,admin-gui" />
+
+
+
+
+
+Deploy the bulid ubder webapps
+loaction: /opt/apache-tomcat-10.1.34/webapps
+
+
+After making any changes, please stop and restart the server
