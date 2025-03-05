@@ -1,0 +1,55 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+	"Region": { 
+	  "Type": "String", 
+	  "Default": "ap-south-1", 
+	  "Description": "The region where the resources will be created" 
+	},
+	"VpcId": {
+	  "Type": "String",
+	  "Description": "VPC id",
+	  "Default": "vpc-08a4d8d6fa7d3fec1"
+	}
+  },
+  "Resources": {
+    "MySecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+	    "VpcId": {
+		   "Ref": "VpcId"
+		},
+        "GroupDescription": "Allow all traffic",
+        "SecurityGroupIngress": [
+          {
+            "IpProtocol": "-1",
+            "FromPort": "-1",
+            "ToPort": "-1",
+            "CidrIp": "0.0.0.0/0"
+          }
+        ],
+        "SecurityGroupEgress": [
+          {
+            "IpProtocol": "-1",
+            "FromPort": "-1",
+            "ToPort": "-1",
+            "CidrIp": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    "MyEC2Instance": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": "ami-0dee22c13ea7a9a67",  
+        "InstanceType": "t3.micro",
+        "KeyName": "Ubuntu machine key pair",  
+        "SecurityGroupIds": [
+          {
+            "Ref": "MySecurityGroup"
+          }
+        ]
+      }
+    }
+  }
+}

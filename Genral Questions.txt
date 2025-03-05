@@ -1,0 +1,40 @@
+Git and Jenkins:
+
+we have a webhook setup, but when we do a specfifc commit, the pipeline shouldn't run -- ci skip
+If you push multiple commits at once, and the latest commit includes a [ci skip] or [skip ci] tag, it will skip the pipeline execution for all commits in that push. This feature is not supported for fork PRs. Scheduled workflows will run even if you push a commit with [ci skip] message.
+
+
+
+I have a Parrelle pipeline setup in the jkenkins, my requirment is fail all the stages if one of the stage got failed
+-- fastFail: true
+
+Matrix build in getaction
+-- Matrix builds are a feature of GitHub Actions that allow you to run multiple jobs in parallel across different configurations, such as operating systems, language versions, and architectures. This allows you to test various configurations easily without redundant workflows.
+
+
+how do we secure credentilanls in Jenkins
+
+how do we run multiple pipelinejobs parrelel? ( we need to configure the executors)
+
+Difference between: 
+1. Easy to integrate any tools like plugins with Jenkins
+2. 
+
+
+Git attributes
+
+repository dispatch github actions
+
+
+Ansible: 
+
+
+
+AWS:
+
+different types of RDS
+key features of RDS
+
+Recordsets in the routes53(a, cname,)
+
+I have a few spot instances in place for 30 days, we need to stop them on everyday at 7 PM

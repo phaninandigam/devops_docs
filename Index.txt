@@ -1,0 +1,8 @@
+1. Unix Commands
+2. Shell Scripting
+3. Git
+4. Jenkins
+5. Git Actions
+6. Ansible
+7. Python
+8. AWS 
